@@ -1,3 +1,5 @@
 name: FukanoKBFFA
 version: 0.0.1 beta
 main: de.fukanoherde.KBFFA.KBFFA
+commands:
+  setspawn:

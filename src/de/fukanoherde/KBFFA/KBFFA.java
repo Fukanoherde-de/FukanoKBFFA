@@ -9,6 +9,7 @@
 package de.fukanoherde.KBFFA;
 
 import de.fukanoherde.FileSystem.Config;
+import de.fukanoherde.Listener.AllListener;
 import de.fukanoherde.Listener.OnmJoin;
 import de.fukanoherde.SpawnSystem;
 import org.bukkit.Bukkit;
@@ -29,15 +30,18 @@ public class KBFFA extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
         Config.loadFile();
 
         Bukkit.getConsoleSender().sendMessage("§6Fukano KBFFA wurde erfolgreich geladen!");
 
         //Listener
         this.pm.registerEvents(new OnmJoin(), this);
+        this.pm.registerEvents(new AllListener(),this);
 
 
         //Commands
+        getCommand("setspawn").setExecutor(new SpawnSystem());
         getCommand("setspawn").setExecutor(new SpawnSystem());
 
 

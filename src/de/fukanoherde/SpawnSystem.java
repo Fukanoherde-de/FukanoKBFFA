@@ -27,7 +27,7 @@ public class SpawnSystem implements CommandExecutor {
 
 
     public static ArrayList<String> Maps = new ArrayList<>();
-    public static File file = new File("plugins//KnockbackFFA//spawns.yml");
+    public static File file = new File("plugins//FukanoKBFFA//spawns.yml");
     public static YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
     public static HashMap<String, Location> location = new HashMap<>();
 
@@ -71,7 +71,6 @@ public class SpawnSystem implements CommandExecutor {
         try {
             cfg.save(file);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
