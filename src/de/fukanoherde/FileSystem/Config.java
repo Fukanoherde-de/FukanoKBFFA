@@ -15,7 +15,7 @@ public class Config {
     private static FileWirter fileWriter = new FileWirter(KBFFA.getPlugin().getDataFolder().getPath(), "config.yml");
     public static void  loadFile(){
 
-        setValue("Prefix", "&8[&3FukanoSystem&8] &6> ");
+        setValue("Prefix", "&8[&3FukanoKBFFA&8] §6» ");
         setValue("NoPerm", "&4Leider hast du dazu keine Rechte!");
         setValue("MySQL.Host", "127.0.0.1");
         setValue("MySQL.Database", "Fukano");
