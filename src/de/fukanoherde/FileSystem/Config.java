@@ -18,6 +18,7 @@ public class Config {
         setValue("Prefix", "&8[&3FukanoKBFFA&8] §6» ");
         setValue("NoPerm", "&4Leider hast du dazu keine Rechte!");
         setValue("MySQL.Host", "127.0.0.1");
+        setValue("MySQL.Port", "3306");
         setValue("MySQL.Database", "Fukano");
         setValue("MySQL.User", "Fukano");
         setValue("MySQL.Password", "S7100EhylVXgLjDM");

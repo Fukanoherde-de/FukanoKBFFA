@@ -8,9 +8,12 @@
 
 package de.fukanoherde.KBFFA;
 
+import de.fukanoherde.Commands.Stats_CMD;
 import de.fukanoherde.FileSystem.Config;
 import de.fukanoherde.Listener.AllListener;
-import de.fukanoherde.Listener.OnmJoin;
+import de.fukanoherde.Listener.DeathListener;
+import de.fukanoherde.Listener.OnJoin;
+import de.fukanoherde.MySQL.MySQL;
 import de.fukanoherde.SpawnSystem;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -36,17 +39,19 @@ public class KBFFA extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("§6Fukano KBFFA wurde erfolgreich geladen!");
 
         //Listener
-        this.pm.registerEvents(new OnmJoin(), this);
+        this.pm.registerEvents(new OnJoin(), this);
         this.pm.registerEvents(new AllListener(),this);
+        this.pm.registerEvents(new DeathListener(), this);
 
 
         //Commands
         getCommand("setspawn").setExecutor(new SpawnSystem());
-        getCommand("setspawn").setExecutor(new SpawnSystem());
+        getCommand("stats").setExecutor(new Stats_CMD());
 
 
         // MySQL
-
+        MySQL.connect();
+        MySQL.createTable();
     }
 
     @Override

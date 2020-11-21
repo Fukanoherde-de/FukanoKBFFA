@@ -14,7 +14,7 @@ import org.bukkit.event.Listener;
 
 import org.bukkit.event.player.*;
 
-public class OnmJoin implements Listener {
+public class OnJoin implements Listener {
 
 
     @EventHandler
