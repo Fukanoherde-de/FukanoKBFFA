@@ -30,7 +30,7 @@ public class Stats {
 
     public static void addPlayer(Player p){
         String uuid = p.getUniqueId().toString();
-        MySQL.update("INSERT INTO Stats(UUID, Player, Kills, Deaths) VALUES('" + p.getUniqueId() + "', '" + p.getName() + "', '0', '0')");
+        MySQL.update("INSERT INTO Stats(Player, UUID, Kills, Deaths) VALUES('" + p.getName() + "', '" + p.getUniqueId() + "', '0', '0')");
     }
 
 
@@ -105,7 +105,7 @@ public class Stats {
         int amount = kills + getKills(p);
 
         if (inList(p)){
-            MySQL.update("UPDATE Stats SET Kills='" + amount +"' WHERE UUID'" + uuid + "'");
+            MySQL.update("UPDATE Stats SET Kills='" + amount +" WHERE UUID" + uuid + "");
         }else {
             addPlayer(p);
         }
@@ -118,7 +118,7 @@ public class Stats {
         }
         int amount = deaths + getDeaths(p);
         if (inList(p)){
-            MySQL.update("UPDATE Stats SET Deaths='" + amount +"' WHERE UUID'" + uuid + "'");
+            MySQL.update("UPDATE Stats SET Deaths='" + amount +"' WHERE UUID'" + uuid +"'");
         }else {
             addPlayer(p);
         }

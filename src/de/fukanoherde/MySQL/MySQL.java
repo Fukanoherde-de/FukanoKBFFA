@@ -60,7 +60,7 @@ public class MySQL {
     public static void createTable(){
     if (isConnect()){
         try {
-            con.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS Stats(UUID VARCHAR(10), Player VARCHAR(10), Kills INT(255) , Deaths INT(255))");
+            con.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS Stats(Player VARCHAR(10), UUID VARCHAR(100), Kills INT(255) , Deaths INT(255))");
         } catch (SQLException e) {
             Bukkit.getConsoleSender().sendMessage("§cLeider konnte keine Table erstellt werden! Grund: " + e);
 
@@ -74,7 +74,8 @@ public class MySQL {
         try {
             con.createStatement().executeUpdate(qry);
         } catch (SQLException e) {
-            Bukkit.getConsoleSender().sendMessage("§cUpdate konnte nicht durchgeführt werden! Grund: " + e);
+            //Bukkit.getConsoleSender().sendMessage("§cUpdate konnte nicht durchgeführt werden! Grund: " + e);
+        e.printStackTrace();
         }
     }
 
