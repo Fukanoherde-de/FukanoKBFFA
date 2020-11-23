@@ -8,30 +8,37 @@
 
 package de.fukanoherde.Commands;
 
-import de.fukanoherde.StatsSystem.Stats;
+import de.fukanoherde.Spigot.CoinAPI.CoinAPI;
+import de.statsapi.mysql.StatsAPI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class Stats_CMD implements CommandExecutor {
 
 
+
     @Override
     public boolean onCommand(CommandSender cms, Command cmd, String label, String[] args) {
-        if (cms instanceof ConsoleCommandSender){
-            cms.sendMessage("§4Leider nicht per Console möglich");
-            return true;
+        Player p = (Player) cms;
+        if (cms instanceof Player){
+
+            double kills = StatsAPI.getKills(p.getUniqueId().toString()).intValue();
+            double deaths = StatsAPI.getDeaths(p.getUniqueId().toString()).intValue();
+            double kd = kills / deaths;
+
+            p.sendMessage("§2§m-----------------§8[§3Stats§8]§2§m-----------------");
+            p.sendMessage("");
+            p.sendMessage("§2Deine Kills§8: §6" + StatsAPI.getKills(p.getUniqueId().toString()));
+            p.sendMessage("§2Deine Tode§8: §6" + StatsAPI.getDeaths(p.getUniqueId().toString()));
+            p.sendMessage("§2Deine KD§8: §6" + kd);
+            p.sendMessage("");
+
+        }else {
+            cms.sendMessage("§cNur ein Spieler kann das ausführen!");
         }
 
-        Player p = (Player) cms;
-        cms.sendMessage("§2====================§8[§3Stats§8]§2====================");
-        cms.sendMessage(" ");
-        cms.sendMessage("§6Kills: §2" + Stats.getKills(p));
-        cms.sendMessage(" ");
-        cms.sendMessage("§6Deaths: §2" + Stats.getDeaths(p));
-        cms.sendMessage(" ");
-        return false;
+        return true;
     }
 }

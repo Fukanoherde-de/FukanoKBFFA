@@ -8,8 +8,13 @@
 
 package de.fukanoherde.Listener;
 
+import de.fukanoherde.KBFFA.KBFFA;
+import de.fukanoherde.SpawnSystem;
+import de.statsapi.mysql.StatsAPI;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
 import org.bukkit.event.player.*;
@@ -17,12 +22,27 @@ import org.bukkit.event.player.*;
 public class OnJoin implements Listener {
 
 
-    @EventHandler
-    public void OnJoin(PlayerJoinEvent e){
-        Player p = e.getPlayer();
-        String name = p.getDisplayName();
+    public void JoinListerner(KBFFA KBFFA){
+        this.pl = KBFFA;
+    }
+    private de.fukanoherde.KBFFA.KBFFA pl;
+    @SuppressWarnings("deprecation")
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void OnJoin(PlayerJoinEvent e) {
 
+
+        e.getPlayer().setFoodLevel(20);
+        e.getPlayer().setHealthScale(6);
+        e.getPlayer().getInventory().clear();
+        e.getPlayer().getInventory().setArmorContents(null);
+        Player p = e.getPlayer();
+        KBFFA.setRandomKit(e.getPlayer());
+        p.teleport(SpawnSystem.location.get(KBFFA.MapName));
+        String name = p.getDisplayName();
         e.setJoinMessage("§8[§2+§8] §6" + name);
+
+        p.setGameMode(GameMode.ADVENTURE);
+
     }
 
     @EventHandler

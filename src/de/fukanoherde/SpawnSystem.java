@@ -39,7 +39,7 @@ public class SpawnSystem implements CommandExecutor {
                 if(args.length == 3){
                     Maps = (ArrayList<String>) cfg.getStringList("Maps");
                     setMap(p, args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]));
-                    p.sendMessage(Config.getValue("Prefix").toString().replace("&", "§")+ "§eDie Map §6" + args[0] + "§e wurde erfolgreich gesetzt!");
+                    p.sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§eDie Map §6" + args[0] + "§e wurde erfolgreich gesetzt!");
                     p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
 
                 }else{
