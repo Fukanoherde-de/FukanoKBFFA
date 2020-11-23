@@ -10,13 +10,12 @@ package de.fukanoherde.Listener;
 
 import de.fukanoherde.FileSystem.Config;
 import de.fukanoherde.KBFFA.KBFFA;
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
+
+
 
 public class DamageListener implements Listener {
 
@@ -39,20 +38,6 @@ public class DamageListener implements Listener {
             e.getDamager().sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§cDu darfst dich hier nicht schlagen...");
         }
 
-    }
-
-    @EventHandler
-    public void onInteract(PlayerInteractEvent e){
-        try{
-            if(e.getPlayer().getLocation().getY() > KBFFA.SpawnY){
-                if(e.getItem().getType() == Material.SNOW_BALL){
-                    e.getPlayer().sendMessage(Config.getValue("Prefix").toString().replace("&", "§")  + "§cDu darfst keine Schneebälle werfen!");
-                    e.setCancelled(true);
-                    return;
-                }
-            }
-        }catch(Exception e1){
-        }
     }
 
     @EventHandler

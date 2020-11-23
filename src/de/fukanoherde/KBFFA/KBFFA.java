@@ -35,7 +35,7 @@ public class KBFFA extends JavaPlugin {
     PluginManager pm = Bukkit.getPluginManager();
     private static KBFFA instance;
     private static KBFFA plugin;
-
+    public Board board = new Board();
     public static String MapName;
     public static int SpawnY;
     public static int KillY;
@@ -90,10 +90,6 @@ public class KBFFA extends JavaPlugin {
                     changeMap = false;
 
                 }
-
-                for (Player all : Bukkit.getOnlinePlayers()) {
-                    Board.setBoard(all);
-                }
             }
         }, 20, 20);
         SpawnSystem.Maps = (ArrayList<String>) SpawnSystem.cfg.getStringList("Maps");
@@ -144,7 +140,7 @@ public class KBFFA extends JavaPlugin {
             public void run() {
                 for (Player all : Bukkit.getOnlinePlayers()) {
                     if (all.getLocation().getY() < KillY) {
-                        all.getPlayer().damage(20);
+                        all.getPlayer().damage(6);
                         onRespawn(all, 2);
                     }
                 }
@@ -237,13 +233,13 @@ public class KBFFA extends JavaPlugin {
         }
         if (KitName.equals("Schneemann")) {
             p.getInventory().setItem(0, buildItem(Material.STICK, 1, 0, "§eKnockback-Stick", Enchantment.KNOCKBACK, 1));
-            p.getInventory().setItem(1, buildItemWAE(Material.SNOW_BALL, 16, 0, "§eSchneeball"));
+            p.getInventory().setItem(1, buildItemWAE(Material.SNOW_BALL, 16, 0, "§ePremierball"));
         }
         if (KitName.equals("Knockback-3")) {
             p.getInventory().setItem(0, buildItem(Material.STICK, 1, 0, "§eKnockback-Stick", Enchantment.KNOCKBACK, 3));
         }
         if (KitName.equals("Ultimate")) {
-            p.getInventory().setItem(0, buildItem(Material.STICK, 1, 0, "§eKnockback-Stick", Enchantment.KNOCKBACK, 5));
+            p.getInventory().setItem(0, buildItem(Material.STICK, 1, 0, "§eUltimate-Stick", Enchantment.KNOCKBACK, 5));
         }
     }
 

@@ -1,5 +1,5 @@
 name: FukanoKBFFA
-version: 0.0.1 beta
+version: V2.2
 main: de.fukanoherde.KBFFA.KBFFA
 depend:
   - FukanoSystem

@@ -28,13 +28,7 @@ public class AllListener implements Listener {
 
 
     @EventHandler
-    public void onGM(PlayerJoinEvent e){
-        Player p = e.getPlayer();
-        p.setGameMode(GameMode.SURVIVAL);
-    }
-
-    @EventHandler
-    public void onAchievment(PlayerAchievementAwardedEvent e){
+    public void onAchievment(PlayerAchievementAwardedEvent e) {
         e.setCancelled(true);
     }
 
@@ -44,35 +38,21 @@ public class AllListener implements Listener {
             e.setCancelled(true);
         }
     }
+
     @EventHandler
-    public void onBNavi(PlayerInteractEvent e){
-        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (e.getPlayer().getGameMode() != GameMode.CREATIVE) {
-                Block b = e.getClickedBlock();
-                if (b.getType() == Material.CHEST || b.getType() == Material.BREWING_STAND || b.getType() == Material.ENCHANTMENT_TABLE
-                        || b.getType() == Material.ENDER_CHEST || b.getType() == Material.ANVIL || b.getType() == Material.DARK_OAK_DOOR || b.getType() == Material.WOODEN_DOOR
-                        || b.getType() == Material.BIRCH_DOOR || b.getType() == Material.ACACIA_DOOR || b.getType() == Material.IRON_DOOR || b.getType() == Material.JUNGLE_DOOR
-                        || b.getType() == Material.SPRUCE_DOOR || b.getType() == Material.TRAP_DOOR || b.getType() == Material.WOOD_DOOR || b.getType() == Material.FENCE_GATE
-                        || b.getType() == Material.WORKBENCH || b.getType() == Material.DROPPER || b.getType() == Material.DISPENSER || b.getType() == Material.HOPPER
-                        || b.getType() == Material.WOOD_BUTTON || b.getType() == Material.STONE_BUTTON || b.getType() == Material.ITEM_FRAME || b.getType() == Material.DAYLIGHT_DETECTOR
-                        || b.getType() == Material.BED_BLOCK || b.getType() == Material.FURNACE || b.getType() == Material.LEVER || b.getType() == Material.WOOD_PLATE){
-                    e.setCancelled(true);
-                }
+    public void onBNavi(PlayerInteractEvent e) {
+        try {
+            if (e.getPlayer().getLocation().getY() > KBFFA.SpawnY || e.getPlayer().getLocation().getY() == KBFFA.SpawnY) {
+                    if (e.getItem().getType() == Material.SNOW_BALL) {
+                        e.getPlayer().sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§cDu darfst keine Schneebälle werfen!");
+                        e.setCancelled(true);
+                    }
+            }
+            } catch(
+                    Exception e1){
+
             }
         }
-    }
-    @EventHandler
-    public void onInteract(PlayerInteractEvent e){
-        try{
-            if(e.getPlayer().getLocation().getY() > KBFFA.SpawnY){
-                if(e.getItem().getType() == Material.SNOW_BALL){
-                    e.getPlayer().sendMessage(Config.getValue("Prefix").toString().replace("&", "§")  + "§cDu darfst keine Schneebälle werfen!");
-                    e.setCancelled(true);
-                }
-            }
-        }catch(Exception e1){
-        }
-    }
 
     @EventHandler
     public void onPlace(BlockPlaceEvent e){

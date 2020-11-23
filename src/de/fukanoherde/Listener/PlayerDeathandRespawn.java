@@ -64,13 +64,6 @@ public class PlayerDeathandRespawn implements Listener {
             KBFFA.setRandomKit(p);
             KBFFA.setRandomKit(p);
             p.updateInventory();
-            Bukkit.getScheduler().scheduleAsyncDelayedTask(KBFFA.getPlugin(), new Runnable() {
-                @Override
-                public void run() {
-                    KBFFA.setRandomKit(p);
-                    onRespawn(p, 1);
-                }
-            }, 5L);
         }else {
             StatsAPI.addKills(p.getKiller().getUniqueId().toString(),+ 1);
             p.sendTitle("§4§l✖", "§9" + p.getKiller().getName());

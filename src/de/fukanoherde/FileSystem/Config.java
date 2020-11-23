@@ -17,7 +17,15 @@ public class Config {
 
         setValue("Prefix", "&8[&3FukanoKBFFA&8] §6» ");
         setValue("NoPerm", "&4Leider hast du dazu keine Rechte!");
-        setValue("SB","&3FukanoKBFFA &6V2.2" );
+        setValue("SB.Name","&3FukanoKBFFA &6V2.2" );
+        setValue("SB.Map","Map" );
+        setValue("SB.MapChange", "Mapchange");
+        setValue("SB.Kit","Kit" );
+        setValue("SB.KitChange", "Kitchange");
+        setValue("SB.Kill","Kill" );
+        setValue("SB.Death","Tode" );
+        setValue("SB.KD","KD" );
+        setValue("SB.Team", "Keine Teams");
         setValue("MySQL.Host", "127.0.0.1");
         setValue("MySQL.Port", "3306");
         setValue("MySQL.Database", "Fukano");

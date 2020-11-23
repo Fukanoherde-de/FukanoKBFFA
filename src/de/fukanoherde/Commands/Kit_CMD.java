@@ -24,13 +24,13 @@ public class Kit_CMD implements CommandExecutor {
             return true;
         }
         if (KBFFA.changeKit == false) {
-            if (KBFFA.KitChange < 10) {
-                p.sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§cDas Kit wird in den nächsten 10 Sekunden geändert...");
+            if (KBFFA.KitChange < 5) {
+                p.sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§cDas Kit wird in den nächsten 5 Sekunden geändert...");
                 return true;
             }
             KBFFA.changeKit = true;
-            p.sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§eDas Kit wird in 10 Sekunden geändert");
-            KBFFA.KitChange = 10;
+            p.sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§eDas Kit wird in 5 Sekunden geändert");
+            KBFFA.KitChange = 5;
         } else {
             p.sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§cDas Kit wird bereits geändert...");
         }
