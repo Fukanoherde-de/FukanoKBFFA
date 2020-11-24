@@ -21,11 +21,6 @@ import org.bukkit.event.player.*;
 
 public class OnJoin implements Listener {
 
-
-    public void JoinListerner(KBFFA KBFFA){
-        this.pl = KBFFA;
-    }
-    private de.fukanoherde.KBFFA.KBFFA pl;
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.HIGHEST)
     public void OnJoin(PlayerJoinEvent e) {
@@ -41,11 +36,14 @@ public class OnJoin implements Listener {
         e.setJoinMessage("§8[§2+§8] §6" + name);
         p.setGameMode(GameMode.ADVENTURE);
 
-        Bukkit.getScheduler().runTaskTimer(KBFFA.getInstance(), () -> {
-            KBFFA.getInstance().board.updateSB(p);
-        }, 0, 20);
 
+        if (Bukkit.getOnlinePlayers().size() != 0) {
+            Bukkit.getScheduler().runTaskTimer(KBFFA.getInstance(), () -> {
+                KBFFA.getInstance().board.updateSB(p);
+            }, 0, 20);
+        }
     }
+
     @EventHandler
     public void onChatclear(PlayerJoinEvent e){
         Player p = e.getPlayer();

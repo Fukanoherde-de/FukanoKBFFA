@@ -36,16 +36,16 @@ public class Board {
 
         obj.getScore(Config.getValue("SB.Map").toString().replace("&", "§")).setScore(12);
         obj.getScore("§1").setScore(11);
-        obj.getScore("§f").setScore(10);
+        obj.getScore("§a").setScore(10);
         obj.getScore(Config.getValue("SB.MapChange").toString().replace("&", "§")).setScore(9);
         obj.getScore("§2").setScore(8);
-        obj.getScore("§e").setScore(7);
+        obj.getScore("§b").setScore(7);
         obj.getScore(Config.getValue("SB.Kit").toString().replace("&", "§")).setScore(6);
         obj.getScore("§3").setScore(5);
-        obj.getScore("§d").setScore(4);
+        obj.getScore("§c").setScore(4);
         obj.getScore(Config.getValue("SB.KitChange").toString().replace("&", "§")).setScore(3);
         obj.getScore("§4").setScore(2);
-        obj.getScore("§c").setScore(1);
+        obj.getScore("§d").setScore(1);
         obj.getScore(Config.getValue("SB.Team").toString().replace("&", "§")).setScore(0);
 
 
@@ -69,18 +69,22 @@ public class Board {
         p.setScoreboard(bord);
     }
 
-    public void updateSB(Player p){
-        Scoreboard bord = p.getScoreboard();
-        Team map = bord.getTeam("maps");
-        Team mapchange = bord.getTeam("mapchange");
-        Team kit = bord.getTeam("kit");
-        Team kitchange = bord.getTeam("kitchange");
+    public void updateSB(Player p) {
+        if (Bukkit.getOnlinePlayers().size() != 0) {
+            Scoreboard bord = p.getScoreboard();
+            Team map = bord.getTeam("maps");
+            Team mapchange = bord.getTeam("mapchange");
+            Team kit = bord.getTeam("kit");
+            Team kitchange = bord.getTeam("kitchange");
+            try {
+                map.setPrefix("§6" + KBFFA.MapName);
+                mapchange.setPrefix("§6" + KBFFA.MapChange);
+                kit.setPrefix("§6" + KBFFA.KitName);
+                kitchange.setPrefix("§6" + KBFFA.KitChange);
+            }catch (Exception e){
 
+            }
 
-        map.setPrefix("§6" + KBFFA.MapName);
-        mapchange.setPrefix("§6" + KBFFA.MapChange);
-        kit.setPrefix("§6" + KBFFA.KitName);
-        kitchange.setPrefix("§6" + KBFFA.KitChange);
-
+        }
     }
 }

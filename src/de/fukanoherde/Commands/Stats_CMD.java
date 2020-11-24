@@ -23,10 +23,8 @@ public class Stats_CMD implements CommandExecutor {
     public boolean onCommand(CommandSender cms, Command cmd, String label, String[] args) {
         Player p = (Player) cms;
         if (cms instanceof Player){
-
-            double kills = StatsAPI.getKills(p.getUniqueId().toString()).intValue();
-            double deaths = StatsAPI.getDeaths(p.getUniqueId().toString()).intValue();
-            double kd = kills / deaths;
+            double kd = ((double)StatsAPI.getKills(p.getUniqueId().toString()) / ((double)StatsAPI.getDeaths(p.getUniqueId().toString())));
+            kd = ((double)((int)(kd * 100))) / 100;
 
             p.sendMessage("§2§m-----------------§8[§3Stats§8]§2§m-----------------");
             p.sendMessage("");

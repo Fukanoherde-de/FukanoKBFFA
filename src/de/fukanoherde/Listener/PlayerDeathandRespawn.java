@@ -91,9 +91,12 @@ public class PlayerDeathandRespawn implements Listener {
         Bukkit.getScheduler().runTaskLater(KBFFA.getPlugin(), new Runnable() {
             @Override
             public void run() {
-                ((CraftPlayer)player).getHandle().playerConnection.a(new PacketPlayInClientCommand(PacketPlayInClientCommand.EnumClientCommand.PERFORM_RESPAWN));
-                player.teleport(SpawnSystem.location.get(KBFFA.MapName));
-                KBFFA.setRandomKit(player);
+                try {
+                    ((CraftPlayer)player).getHandle().playerConnection.a(new PacketPlayInClientCommand(PacketPlayInClientCommand.EnumClientCommand.PERFORM_RESPAWN));
+                    player.teleport(SpawnSystem.location.get(KBFFA.MapName));
+                    KBFFA.setRandomKit(player);
+                }catch (Exception e){
+                }
             }
         },Time);
     }

@@ -46,6 +46,10 @@ public class AllListener implements Listener {
                     if (e.getItem().getType() == Material.SNOW_BALL) {
                         e.getPlayer().sendMessage(Config.getValue("Prefix").toString().replace("&", "§") + "§cDu darfst keine Schneebälle werfen!");
                         e.setCancelled(true);
+                        return;
+                    }
+                    if (e.getClickedBlock().getType() == Material.ENDER_CHEST){
+                        e.setCancelled(true);
                     }
             }
             } catch(

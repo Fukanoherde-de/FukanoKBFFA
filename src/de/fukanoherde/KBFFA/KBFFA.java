@@ -140,8 +140,12 @@ public class KBFFA extends JavaPlugin {
             public void run() {
                 for (Player all : Bukkit.getOnlinePlayers()) {
                     if (all.getLocation().getY() < KillY) {
-                        all.getPlayer().damage(6);
-                        onRespawn(all, 2);
+                        try {
+                            all.getPlayer().damage(20);
+                            onRespawn(all, 2);
+                        }catch (Exception e){
+
+                        }
                     }
                 }
 
@@ -153,8 +157,11 @@ public class KBFFA extends JavaPlugin {
         Bukkit.getScheduler().runTaskLater(this, new Runnable() {
             @Override
             public void run() {
-                ((CraftPlayer)player).getHandle().playerConnection.a(new PacketPlayInClientCommand(PacketPlayInClientCommand.EnumClientCommand.PERFORM_RESPAWN));
-                KBFFA.setRandomKit(player);
+                try {
+                    ((CraftPlayer)player).getHandle().playerConnection.a(new PacketPlayInClientCommand(PacketPlayInClientCommand.EnumClientCommand.PERFORM_RESPAWN));
+                    KBFFA.setRandomKit(player);
+                }catch (Exception e){
+                }
             }
         },Time);
     }
